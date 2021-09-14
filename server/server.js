@@ -7,7 +7,7 @@ const app = express();
 const cors = require("cors");
 app.use(
     cors({
-        origin:"https://brave-mccarthy-4c6a71.netlify.app/",
+        origin:"*",
     })
 )
 
