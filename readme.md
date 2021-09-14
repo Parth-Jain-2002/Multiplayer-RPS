@@ -1,0 +1,1 @@
+This is the Rock-Paper-Scissor implemented using HTML, CSS, Javascript and Socket.io.
