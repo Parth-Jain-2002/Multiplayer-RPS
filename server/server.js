@@ -5,17 +5,16 @@ const socketio = require("socket.io");
 
 const app = express();
 const cors = require("cors");
-app.use(
-    cors({
-        origin:"*",
-    })
-)
 
 const server = http.createServer(app);
 
 app.use(express.static(path.join(__dirname, "public")));
 
-const io = socketio(server);
+const io = socketio(server,{
+    cors:{
+        origin:"*",
+    }
+});
 
 const {userConnected, connectedUsers, initializeChoices, moves, makeMove, choices} = require("./util/users");
 const {createRoom, joinRoom, exitRoom, rooms} = require("./util/rooms");
