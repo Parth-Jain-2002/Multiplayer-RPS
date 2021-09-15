@@ -1,4 +1,8 @@
-const socket = io('https://intense-springs-97682.herokuapp.com/');
+const socket = io('https://intense-springs-97682.herokuapp.com/',{
+    withCredentials: true,
+    extraHeaders: {
+      "my-custom-header": "abcd"
+    }});
 
 // DOM Elements
 const openCreateRoomBox = document.getElementById("open-create-room-box");

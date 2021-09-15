@@ -9,10 +9,12 @@ const cors = require("cors");
 const server = http.createServer(app);
 
 app.use(express.static(path.join(__dirname, "public")));
-app.use(cors());
+app.use(cors({
+    origin:"https://brave-mccarthy-4c6a71.netlify.app/",
+}));
 const io = socketio(server,{
     cors:{
-        origin:"*",
+        origin:"https://brave-mccarthy-4c6a71.netlify.app/",
     }
 });
 
