@@ -11,10 +11,16 @@ const server = http.createServer(app);
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors({
     origin:"https://brave-mccarthy-4c6a71.netlify.app/",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["my-custom-header"],
+    credentials: true
 }));
 const io = socketio(server,{
     cors:{
         origin:"https://brave-mccarthy-4c6a71.netlify.app/",
+        methods: ["GET", "POST"],
+    allowedHeaders: ["my-custom-header"],
+    credentials: true
     }
 });
 
