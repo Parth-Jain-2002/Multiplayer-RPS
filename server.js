@@ -4,29 +4,12 @@ const path = require("path");
 const socketio = require("socket.io");
 
 const app = express();
-const cors = require("cors");
 
 const server = http.createServer(app);
-app.all('/', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    next()
-  });
+
 app.use(express.static(path.join(__dirname, "public")));
-app.use(cors({
-    origin:"https://brave-mccarthy-4c6a71.netlify.app/",
-    methods: ["GET", "POST"],
-    allowedHeaders: ["my-custom-header"],
-    credentials: true
-}));
-const io = socketio(server,{
-    cors:{
-        origin:"https://brave-mccarthy-4c6a71.netlify.app/",
-        methods: ["GET", "POST"],
-    allowedHeaders: ["my-custom-header"],
-    credentials: true
-    }
-});
+
+const io = socketio(server);
 
 const {userConnected, connectedUsers, initializeChoices, moves, makeMove, choices} = require("./util/users");
 const {createRoom, joinRoom, exitRoom, rooms} = require("./util/rooms");
