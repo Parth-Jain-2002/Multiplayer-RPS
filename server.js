@@ -7,7 +7,11 @@ const app = express();
 const cors = require("cors");
 
 const server = http.createServer(app);
-
+app.all('/', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next()
+  });
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors({
     origin:"https://brave-mccarthy-4c6a71.netlify.app/",
