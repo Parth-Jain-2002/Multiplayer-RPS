@@ -167,13 +167,13 @@ socket.on("draw", message => {
     setWinningMessage(message);
 })
 
-socket.on("player-1-wins", ({myChoice, enemyChoice}) => {
+socket.on("player-1-wins", ({playerOneChoice, playerTwoChoice}) => {
     if(playerId === 1){
-        let message = "You choose " + enemyChoice + " and the enemy choose " + myChoice + " . So you win!";
+        let message = "You choose " + playerOneChoice + " and the enemy choose " + playerTwoChoice + " . So you win!";
         setWinningMessage(message);
         myScorePoints++;
     }else{
-        let message = "You choose " + myChoice + " and the enemy choose " + enemyChoice + " . So you lose!";
+        let message = "You choose " + playerTwoChoice + " and the enemy choose " + playerOneChoice + " . So you lose!";
         setWinningMessage(message);
         enemyScorePoints++;
     }
@@ -181,13 +181,13 @@ socket.on("player-1-wins", ({myChoice, enemyChoice}) => {
     displayScore()
 })
 
-socket.on("player-2-wins", ({myChoice, enemyChoice}) => {
+socket.on("player-2-wins", ({playerOneChoice, playerTwoChoice}) => {
     if(playerId === 2){
-        let message = "You choose " + myChoice + " and the enemy choose " + enemyChoice + " . So you win!";
+        let message = "You choose " + playerTwoChoice + " and the enemy choose " + playerOneChoice + " . So you win!";
         setWinningMessage(message);
         myScorePoints++;
     }else{
-        let message = "You choose " + enemyChoice + " and the enemy choose " + myChoice + " . So you lose!";
+        let message = "You choose " + playerOneChoice + " and the enemy choose " + playerTwoChoice + " . So you lose!";
         setWinningMessage(message);
         enemyScorePoints++;
     }

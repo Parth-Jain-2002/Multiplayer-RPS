@@ -91,7 +91,7 @@ io.on("connection", socket => {
                     enemyChoice = playerOneChoice;
                 }
 
-                io.to(roomId).emit("player-1-wins", {myChoice, enemyChoice});
+                io.to(roomId).emit("player-1-wins", {playerOneChoice,playerTwoChoice});
             }else{
                 let enemyChoice = "";
 
@@ -101,7 +101,7 @@ io.on("connection", socket => {
                     enemyChoice = playerOneChoice;
                 }
 
-                io.to(roomId).emit("player-2-wins", {myChoice, enemyChoice});
+                io.to(roomId).emit("player-2-wins", {playerOneChoice,playerTwoChoice});
             }
 
             choices[roomId] = ["", ""];
