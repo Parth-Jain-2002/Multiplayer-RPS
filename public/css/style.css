@@ -9,6 +9,8 @@ body {
     height: 100vh;
     font-size: 16px;
     font-family: monospace;
+    overflow: hidden;
+    background-image: url("rps.png");
 }
 
 .start-screen {
@@ -21,17 +23,38 @@ body {
     font-size: 3rem;
     color: #111;
     padding-top: 30px;
-    margin-bottom: 40px;
+    margin-top:40px;
+    margin-bottom: 80px;
 }
 
+.start-screen h2 {
+    font-size: 1.3rem;
+    color: #111;
+    position: absolute;
+    right:20px;
+    bottom:20px;
+}
+a:link {
+    color: #111;
+  }
+a:visited {
+    text-decoration: none;
+    color:#111;
+}
+a:hover {
+    text-decoration: none;
+    font-size:1.4rem;
+    color: hotpink;
+  }
+
 .gameplay-choices button {
-    padding: 5px 25px;
+    padding: 10px 55px;
     background: #189116;
     color: white;
     outline: none;
     border: none;
     display: block;
-    margin: 0 auto;
+    margin: 0px auto;
     margin-bottom: 25px;
 }
 

@@ -169,7 +169,7 @@ socket.on("draw", message => {
 
 socket.on("player-1-wins", ({myChoice, enemyChoice}) => {
     if(playerId === 1){
-        let message = "You choose " + myChoice + " and the enemy choose " + enemyChoice + " . So you win!";
+        let message = "You choose " + enemyChoice + " and the enemy choose " + myChoice + " . So you win!";
         setWinningMessage(message);
         myScorePoints++;
     }else{
@@ -187,7 +187,7 @@ socket.on("player-2-wins", ({myChoice, enemyChoice}) => {
         setWinningMessage(message);
         myScorePoints++;
     }else{
-        let message = "You choose " + myChoice + " and the enemy choose " + enemyChoice + " . So you lose!";
+        let message = "You choose " + enemyChoice + " and the enemy choose " + myChoice + " . So you lose!";
         setWinningMessage(message);
         enemyScorePoints++;
     }
