@@ -112,6 +112,7 @@ io.on("connection", socket => {
         if(connectedUsers[socket.client.id]){
             let player;
             let roomId;
+            let exist=false;
 
             for(let id in rooms){
                 if(rooms[id][0] === socket.client.id || 
@@ -123,15 +124,18 @@ io.on("connection", socket => {
                     }
 
                     roomId = id;
+                    exist=true;
                     break;
                 }
             }
 
-            exitRoom(roomId, player);
-
             if(player === 1){
+                exitRoom(roomId, player);
                 io.to(roomId).emit("player-1-disconnected");
             }else{
+                if(exist==true){
+                    exitRoom(roomId, player);
+                }
                 io.to(roomId).emit("player-2-disconnected");
             }
         }
