@@ -27,6 +27,7 @@ const enemyScore = document.getElementById('enemy-score');
 const playerOneTag = document.getElementById("player-1-tag");
 const playerTwoTag = document.getElementById("player-2-tag");
 const winMessage = document.getElementById("win-message");
+const msgButton = document.getElementById("msg-button")
 
 //  Game variables
 let canChoose = false;
@@ -104,10 +105,23 @@ scissor.addEventListener("click", function(){
         myChoice = "scissor";
         choose(myChoice);
         socket.emit("make-move", {playerId, myChoice, roomId});
+        console.log(playerId)
     }
 })
 
+msgButton.addEventListener("click",function(){
+    const text = document.getElementById('msg-send').value;
+    socket.emit("message", {text,roomId,playerId})
+})
+
+
 // Socket
+socket.on("message", ({playertext,enemytext}) =>{
+    const el = document.createElement('li');
+    el.innerHTML = (playerId===1)? playertext : enemytext;
+    document.querySelector('ul').appendChild(el);
+});
+
 socket.on("display-error", error => {
     errorMessage.style.display = "block";
     let p = document.createElement("p");

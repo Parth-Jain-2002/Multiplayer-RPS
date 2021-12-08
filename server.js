@@ -70,6 +70,20 @@ io.on("connection", socket => {
             initializeChoices(roomId);
         }
     });
+    
+    socket.on("message",({text,roomId,playerId})=>{
+        let playertext;
+        let enemytext;
+        if(playerId===1){
+           playertext="You: "+text;
+           enemytext="Enemy: "+text;
+        }
+        else{
+           playertext="Enemy: "+text;
+           enemytext="You: "+text; 
+        }
+        io.to(roomId).emit("message",{playertext,enemytext});
+    });
 
     socket.on("make-move", ({playerId, myChoice, roomId}) => {
         makeMove(roomId, playerId, myChoice);
